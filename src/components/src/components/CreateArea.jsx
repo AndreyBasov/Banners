@@ -3,7 +3,6 @@ import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
 import {Button, Modal} from 'react-bootstrap';
-import {HuePicker} from "react-color";
 
 function CreateArea(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -12,8 +11,7 @@ function CreateArea(props) {
     setBanner({
       title: "",
       content: "",
-      url: "",
-      color:"#fff"
+      url: ""
     });
     setExpanded(true);
   };
@@ -21,8 +19,7 @@ function CreateArea(props) {
   const [banner, setBanner] = useState({
     title: "",
     content: "",
-    url: "",
-    color:"#fff"
+    url: ""
   });
 
   function handleChange(event) {
@@ -41,20 +38,8 @@ function CreateArea(props) {
     event.preventDefault();
   }
 
-  function handleColor(updatedColor) {
-    setColor(updatedColor.hex);
-    setBanner(prevBanner => {
-      return {
-        ...prevBanner,
-        color: updatedColor.hex
-      };
-    });
-
-  }
-  const [color, setColor] = useState("#fff");
-
   return (
-    <div className="note">
+    <div className="note" style = {{position: "relative"}}>
       <Button onClick = {handleShow}><AddIcon /></Button>
       <Modal centered= {true} show={isExpanded} onHide={handleClose}>
         <Modal.Body>
@@ -89,8 +74,6 @@ function CreateArea(props) {
               </Fab>
             </Zoom>
           </form>
-          <HuePicker color = {color} onChange = {handleColor} />
-          <h2>The color you picked: {color} </h2>
         </Modal.Body>
       </Modal>
     </div>

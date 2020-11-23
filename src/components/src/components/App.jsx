@@ -7,6 +7,7 @@ import CreateArea from "./CreateArea";
 import {Modal, Carousel} from 'react-bootstrap';
 
 function App() {
+  console.log(startingBanners);
   const [banners, setBanners] = useState([...startingBanners]);
 
   function addBanner(newBanner) {
@@ -45,7 +46,6 @@ function App() {
             title={bannerItem.title}
             content={bannerItem.content}
             url={bannerItem.url}
-            color = {bannerItem.color}
             onDelete={deleteBanner}
             onBannerClick = {onBannerClick}
           />
@@ -54,23 +54,23 @@ function App() {
       <CreateArea onAdd={addBanner} />
       <Modal centered= {true} show={isExpanded} onHide={handleClose}>
         <Modal.Body>
-          <Carousel activeIndex={index} onSelect={handleSelect}>
-          {banners.map((bannerItem, index) => {
-            return (
-              <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={bannerItem.url}
-                    alt="A slide"
-                />
-                <Carousel.Caption>
-                    <h3 style ={{color : bannerItem.color}}>{bannerItem.title.substring(0, 30)}</h3>
-                    <p style={{textAlign: "justify", color : bannerItem.color}}>{bannerItem.content.substring(0, 400)}</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            );
-          })}
-          </Carousel>
+        <Carousel activeIndex={index} onSelect={handleSelect}>
+        {banners.map((bannerItem, index) => {
+          return (
+            <Carousel.Item>
+              <img
+                  className="d-block w-100"
+                  src={bannerItem.url}
+                  alt="A slide"
+              />
+              <Carousel.Caption>
+                  <h3>{bannerItem.title}</h3>
+                  <p>{bannerItem.content}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+        </Carousel>
         </Modal.Body>
       </Modal>
       <Footer />
