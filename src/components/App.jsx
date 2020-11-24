@@ -62,9 +62,9 @@ const App = () => {
             return (
               <Carousel.Item>
                 <img
-                    className="d-block w-100"
-                    src={bannerItem.url}
-                    alt="A slide"
+                  className="carousel-img d-block w-100"
+                  src={bannerItem.url}
+                  alt="A slide"
                 />
                 <Carousel.Caption>
                     <h3 style ={{color : bannerItem.color}}>{bannerItem.title.substring(0, 30)}</h3>

@@ -6,7 +6,7 @@ import {Button, Modal} from 'react-bootstrap';
 import {HuePicker} from "react-color";
 
 const CreateArea = (props) => {
-  const [isExpanded, setExpanded] = useState(false);
+  let [isExpanded, setExpanded] = useState(false);
   const handleClose = () => setExpanded(false);
   const handleShow = () => {
     setBanner({
@@ -18,14 +18,14 @@ const CreateArea = (props) => {
     setExpanded(true);
   };
 
-  const [banner, setBanner] = useState({
+  let [banner, setBanner] = useState({
     title: "",
     content: "",
     url: "",
     color:"#000"
   });
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setBanner(prevBanner => {
       return {
@@ -35,13 +35,13 @@ const CreateArea = (props) => {
     });
   }
 
-  function submitNote(event) {
+  const submitNote = (event) => {
     props.onAdd(banner);
     handleClose();
     event.preventDefault();
   }
 
-  function handleColor(updatedColor) {
+  const handleColor = (updatedColor) => {
     setColor(updatedColor.hex);
     setBanner(prevBanner => {
       return {
@@ -51,7 +51,7 @@ const CreateArea = (props) => {
     });
 
   }
-  const [color, setColor] = useState("#fff");
+  let [color, setColor] = useState("#fff");
 
   return (
     <div className="note">
