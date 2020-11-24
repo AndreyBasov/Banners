@@ -65,7 +65,7 @@ const CreateArea = (props) => {
               onChange={handleChange}
               value={banner.title}
               placeholder="Title"
-              autocomplete="off"
+              autoComplete="off"
             />
             <hr/>
             <textarea
