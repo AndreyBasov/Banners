@@ -5,7 +5,7 @@ import Zoom from "@material-ui/core/Zoom";
 import {Button, Modal} from 'react-bootstrap';
 
 function CreateArea(props) {
-  const [isExpanded, setExpanded] = useState(false);
+  let [isExpanded, setExpanded] = useState(false);
   const handleClose = () => setExpanded(false);
   const handleShow = () => {
     setBanner({
@@ -16,13 +16,13 @@ function CreateArea(props) {
     setExpanded(true);
   };
 
-  const [banner, setBanner] = useState({
+  let [banner, setBanner] = useState({
     title: "",
     content: "",
     url: ""
   });
 
-  function handleChange(event) {
+  const handleChange(event) => {
     const { name, value } = event.target;
     setBanner(prevBanner => {
       return {
@@ -32,7 +32,7 @@ function CreateArea(props) {
     });
   }
 
-  function submitNote(event) {
+  const submitNote(event) => {
     props.onAdd(banner);
     handleClose();
     event.preventDefault();

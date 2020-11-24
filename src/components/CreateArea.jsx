@@ -13,7 +13,7 @@ function CreateArea(props) {
       title: "",
       content: "",
       url: "",
-      color:"#fff"
+      color:"#000"
     });
     setExpanded(true);
   };
@@ -22,7 +22,7 @@ function CreateArea(props) {
     title: "",
     content: "",
     url: "",
-    color:"#fff"
+    color:"#000"
   });
 
   function handleChange(event) {

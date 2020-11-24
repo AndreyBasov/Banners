@@ -5,23 +5,23 @@ import {Modal} from 'react-bootstrap';
 
 function Banner(props) {
 
-  function handleDeleteClick(event) {
+  const handleDeleteClick = (event) => {
     props.onDelete(props.id);
     event.stopPropagation()
   }
 
-  function handleDownloadClick(event) {
+  const handleDownloadClick = (event) => {
     setExpanded2(true);
     event.stopPropagation();
   }
   
 
-  function handleClick(event) {
+  const openStories = (event) => {
     props.onBannerClick(props.id);
     event.stopPropagation();
   }
 
-  function handleDownload2(event) {
+  const handleDownload2 = (event) => {
       const el = document.createElement('textarea');
       el.value = props.url;
       document.body.appendChild(el);
@@ -30,29 +30,27 @@ function Banner(props) {
       document.body.removeChild(el);
   }
 
-  function handleDownload3(event) {
+  const handleDownload3 = event => {
     const el = document.createElement('textarea');
-      el.value = JSON.stringify({
-        title: props.title,
-        content: props.content,
-        url: props.url
-      });
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-    
-    
+    el.value = JSON.stringify({
+      title: props.title,
+      content: props.content,
+      url: props.url
+    });
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
   }
 
-  const [isExpanded2, setExpanded2] = useState(false);
-  function handleCloseDownload(event) {
+  let [isExpanded2, setExpanded2] = useState(false);
+  const closeModal = (event) => {
     setExpanded2(false);
   }
  
   return (
     <div>
-      <div onClick={handleClick} className="note">
+      <div onClick={openStories} className="note">
         <img src={props.url} alt={props.id}></img> 
         <h1 style = {{color: props.color}}>{props.title.substring(0, 30)}</h1>
         <button className="delete-button" onClick={handleDeleteClick}>
@@ -62,7 +60,7 @@ function Banner(props) {
           <GetAppIcon />
         </button>
       </div>
-      <Modal centered= {true} show={isExpanded2} onHide={handleCloseDownload}>
+      <Modal centered= {true} show={isExpanded2} onHide={closeModal}>
           <Modal.Body>
           <div className="download-field">
             <ul>

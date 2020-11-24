@@ -134,13 +134,14 @@ p.form-title {
 form.create-note {
   text-align: center;
   position: relative;
-  width: 30vw;
+  width: 90%;
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
 
 form.create-note input,
 form.create-note textarea {

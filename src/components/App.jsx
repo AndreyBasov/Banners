@@ -4,18 +4,18 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import startingBanners from "./startingBanners";
 import CreateArea from "./CreateArea";
-import {Modal, Carousel} from 'react-bootstrap';
+import {Modal, Carousel} from "react-bootstrap";
 
 function App() {
-  const [banners, setBanners] = useState([...startingBanners]);
+  let [banners, setBanners] = useState([...startingBanners]);
 
-  function addBanner(newBanner) {
+  const addBanner = (newBanner) => {
     setBanners(prevBanners => {
       return [...prevBanners, newBanner];
     });
   }
 
-  function deleteBanner(id) {
+  const deleteBanner = (id) => {
     setBanners(prevNotes => {
       return prevNotes.filter((bannerItem, index) => {
         return index !== id;
@@ -23,13 +23,16 @@ function App() {
     });
   }
 
-  const [isExpanded, setExpanded] = useState(false);
-  const [index, setIndex] = useState(0);
-  const handleClose = () => setExpanded(false);
-  const handleSelect = (selectedIndex, e) => {
+  let [index, setIndex] = useState(0);
+  const selectStory = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
-  function onBannerClick(id) {
+
+  let [isExpanded, setExpanded] = useState(false);
+  const closeModal = () => setExpanded(false);
+
+
+  const onBannerClick = (id) => {
     setIndex(id);
     setExpanded(true);
   }
@@ -52,9 +55,9 @@ function App() {
         );
       })}
       <CreateArea onAdd={addBanner} />
-      <Modal centered= {true} show={isExpanded} onHide={handleClose}>
+      <Modal centered= {true} show={isExpanded} onHide={closeModal}>
         <Modal.Body>
-          <Carousel activeIndex={index} onSelect={handleSelect}>
+          <Carousel activeIndex={index} onSelect={selectStory}>
           {banners.map((bannerItem, index) => {
             return (
               <Carousel.Item>
@@ -65,7 +68,7 @@ function App() {
                 />
                 <Carousel.Caption>
                     <h3 style ={{color : bannerItem.color}}>{bannerItem.title.substring(0, 30)}</h3>
-                    <p style={{textAlign: "justify", color : bannerItem.color}}>{bannerItem.content.substring(0, 400)}</p>
+                    <p style={{color : bannerItem.color, textAlign: "justify"}}>{bannerItem.content.substring(0, 400)}</p>
                 </Carousel.Caption>
               </Carousel.Item>
             );
