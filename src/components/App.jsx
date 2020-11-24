@@ -6,7 +6,7 @@ import startingBanners from "./startingBanners";
 import CreateArea from "./CreateArea";
 import {Modal, Carousel} from "react-bootstrap";
 
-function App() {
+const App = () => {
   let [banners, setBanners] = useState([...startingBanners]);
 
   const addBanner = (newBanner) => {

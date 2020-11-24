@@ -3,7 +3,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import GetAppIcon from '@material-ui/icons/GetApp';
 import {Modal} from 'react-bootstrap';
 
-function Banner(props) {
+const Banner = (props) => {
 
   const handleDeleteClick = (event) => {
     props.onDelete(props.id);

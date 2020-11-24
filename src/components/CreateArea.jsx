@@ -5,7 +5,7 @@ import Zoom from "@material-ui/core/Zoom";
 import {Button, Modal} from 'react-bootstrap';
 import {HuePicker} from "react-color";
 
-function CreateArea(props) {
+const CreateArea = (props) => {
   const [isExpanded, setExpanded] = useState(false);
   const handleClose = () => setExpanded(false);
   const handleShow = () => {

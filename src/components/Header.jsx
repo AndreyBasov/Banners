@@ -1,7 +1,7 @@
 import React from "react";
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
 
-function Header() {
+const Header = () => {
   return (
     <header>
       <h1>
