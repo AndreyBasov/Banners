@@ -1,6 +1,8 @@
 A project to create a feed of banners! 
 https://andreybasov.github.io/Banners/
 
+Выполнено с использованием React
+
 Функционал: 
 1) По щелчку на баннер открывается Stories
 2) При нажатии на плюс можно добавить новый баннер (ввести параметры, выбрать цвет)
